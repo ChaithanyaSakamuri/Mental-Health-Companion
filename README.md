@@ -44,7 +44,6 @@ MindCare AI is a web application that allows users to chat with an AI companion 
 
 ## Screenshots
 
-> _Include screenshots or GIFs of your application interface here for better understanding._
 
 ---
 

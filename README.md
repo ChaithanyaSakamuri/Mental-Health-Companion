@@ -14,7 +14,6 @@ Welcome to **MindCare AI**, a supportive web-based chatbot designed to help user
 
 - [Project Overview](#project-overview)
 - [Features](#features)
-- [Screenshots](#screenshots)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Project Structure](#project-structure)

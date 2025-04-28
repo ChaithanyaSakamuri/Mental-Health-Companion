@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCare AI | Mental Health Companion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login/Signup Container -->
+    <div class="auth-container" id="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <img src="person.png" alt="MindCare Logo" class="logo">
+                <h2>Welcome to MindCare AI</h2>
+                <p>Your mental health companion</p>
+            </div>
+            
+            <div class="auth-tabs">
+                <button class="tab-btn active" id="login-tab">Login</button>
+                <button class="tab-btn" id="signup-tab">Sign Up</button>
+            </div>
+            
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Login</button>
+                <p class="auth-footer">By continuing, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+            </form>
+            
+            <form id="signup-form" class="auth-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm">Confirm Password</label>
+                    <input type="password" id="signup-confirm" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Create Account</button>
+                <p class="auth-footer">By continuing, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Main Chat Container (hidden initially) -->
+    <div class="main-container" id="main-container" style="display: none;">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="person.png" alt="MindCare Logo" class="logo">
+                <h3>MindCare AI</h3>
+            </div>
+            <button class="new-chat-btn" id="new-chat-btn">
+                <i class="fas fa-plus"></i> New Chat
+            </button>
+            <div class="chat-history" id="chat-history">
+                <!-- Chat history items will be added here -->
+            </div>
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-info">
+                    <span id="username-display">User</span>
+                    <small id="user-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f085839582b09588919d809c95de939f9d">[email&#160;protected]</a></small>
+                </div>
+                <button id="logout-btn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2 id="current-chat-title">Mental Health Companion</h2>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <div class="welcome-message">
+                    <h3>Welcome to MindCare AI</h3>
+                    <p>I'm here to support your mental health journey. You can talk to me about:</p>
+                    <ul>
+                        <li>Stress or anxiety you're experiencing</li>
+                        <li>Mood changes or depression symptoms</li>
+                        <li>Relationship or family issues</li>
+                        <li>Self-care and wellness strategies</li>
+                    </ul>
+                    <p>Remember, I'm not a substitute for professional help, but I can offer support and resources.</p>
+                </div>
+            </div>
+            
+            <div class="typing-indicator" id="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <div class="input-area">
+                <textarea id="user-input" placeholder="Share your thoughts or feelings..." rows="1"></textarea>
+                <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+            
+            <div class="disclaimer">
+                <p><strong>Important:</strong> MindCare AI is not a crisis service. If you're in immediate distress, please contact your local emergency services or a crisis hotline.</p>
+            </div>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
+</body>
+</html>

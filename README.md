@@ -1,8 +1,3 @@
-## Example README.md for Your GitHub Project
-
-Below is a detailed and well-structured README template you can use for your GitHub project. This template is designed to be comprehensive and beginner-friendly, with clear explanations for each section. You should customize the content (especially the project title, description, setup instructions, and usage examples) according to your actual project.
-
----
 
 # MindCare AI – Your Mental Health Companion
 

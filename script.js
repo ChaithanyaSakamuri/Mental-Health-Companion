@@ -15,9 +15,9 @@ const usernameDisplay = document.getElementById('username-display');
 const userEmail = document.getElementById('user-email');
 const chatHistory = document.getElementById('chat-history');
 
-// API Key
-const API_KEY = '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';
-const API_ENDPOINT = 'https://api.example.com/v1/completions'; 
+// API Key and Endpoint for Google AI Studio (Gemini API)
+const API_KEY = 'AIzaSyCI0Mk2yECuT3R2V5xIU9kbHh6iCcFncWk';
+const API_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
 
 // Sample user data (in a real app, this would be from a database)
 let users = [
@@ -321,27 +321,42 @@ async function generateResponse(userMessage) {
         return getGratitudeResponse();
     }
     
-    // Make API call to generate response
+    // Make API call to Google AI Studio (Gemini API)
     try {
-        const response = await fetch(API_ENDPOINT, {
+        const response = await fetch(`${API_ENDPOINT}?key=${API_KEY}`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${API_KEY}`
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                prompt: `You are MindCare AI, a mental health companion. Provide a supportive and empathetic response to the following user message: "${userMessage}". Focus on mental health support, offering encouragement, validation, or simple coping strategies. If appropriate, suggest the user seek professional help but avoid diagnosing. Keep the tone warm and caring.`,
-                max_tokens: 150,
-                temperature: 0.7
+                contents: [
+                    {
+                        parts: [
+                            {
+                                text: `You are MindCare AI, a mental health companion. Provide a supportive and empathetic response to the following user message: "${userMessage}". Focus on mental health support, offering encouragement, validation, or simple coping strategies. If appropriate, suggest the user seek professional help but avoid diagnosing. Keep the tone warm and caring.`
+                            }
+                        ]
+                    }
+                ],
+                generationConfig: {
+                    temperature: 0.7,
+                    maxOutputTokens: 150
+                }
             })
         });
         
         if (!response.ok) {
-            throw new Error(`API request failed with status ${response.status}`);
+            const errorText = await response.text();
+            throw new Error(`API request failed with status ${response.status}: ${errorText}`);
         }
         
         const data = await response.json();
-        return data.choices[0].text.trim(); // Adjust based on actual API response structure
+        console.log('API Response:', data); // Debug the response
+        // Gemini API response structure: { candidates: [{ content: { parts: [{ text: "..." }] } }, ...] }
+        if (!data.candidates || !data.candidates[0] || !data.candidates[0].content || !data.candidates[0].content.parts) {
+            throw new Error('Unexpected API response structure');
+        }
+        return data.candidates[0].content.parts[0].text.trim();
     } catch (error) {
         console.error('API Error:', error);
         // Fallback to local response if API fails
